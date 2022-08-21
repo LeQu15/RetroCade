@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { start } from 'repl';
 
 let touchstartX = 0;
 let touchendX = 0;
@@ -15,7 +14,6 @@ function Snake() {
 	const [gameOverFlag, stopGame] = useState(false);
 	const [buttonStatus, changeButtonStatus] = useState('0%');
 	const snakeTitle = React.useRef<HTMLHeadingElement>(null);
-	const [touchPosition, setTouchPosition] = useState(null);
 
 	useEffect(() => {
 		startGame();
@@ -33,17 +31,19 @@ function Snake() {
 	useEffect(() => {
 		if (arrayBoard.length > 2) {
 			let x = arrayBoard;
-			let position = Math.floor(Math.random() * 255);
-			while (snake.includes(position)) {
-				position = Math.floor(Math.random() * 255);
+			if (!arrayBoard.includes('coin')) {
+				let position = Math.floor(Math.random() * 255);
+				while (snake.includes(position)) {
+					position = Math.floor(Math.random() * 255);
+				}
+				x[position] = 'coin';
 			}
-			x[position] = 'coin';
 		}
 		if (score === 252) {
 			stopGame(true);
 			changeButtonStatus('100%');
 		}
-	}, [arrayBoard, score]);
+	}, [arrayBoard, score, snake]);
 
 	useEffect(() => {
 		if (arrayBoard.length > 2) {
@@ -71,20 +71,7 @@ function Snake() {
 					x[snake[snake.length - 1]] = 'snakeHead right';
 			}
 		}
-	}, [arrayBoard, snake]);
-
-	useEffect(() => {
-		if (gameOverFlag) {
-			if (JSON.parse(localStorage.getItem('snakerecord') || '0') < score) {
-				localStorage.setItem('snakerecord', JSON.stringify(score));
-			}
-			document.removeEventListener('keydown', handleChangeDirection);
-			if (snakeTitle.current) {
-				snakeTitle.current.innerHTML = `Koniec gry! Wynik: ${score}`;
-			}
-			changeButtonStatus('100%');
-		}
-	}, [gameOverFlag]);
+	}, [arrayBoard, snake, direction]);
 
 	const resetGame = () => {
 		changeArray(['']);
@@ -106,7 +93,7 @@ function Snake() {
 				if (
 					direction !== 'right' &&
 					direction !== 'left' &&
-					direction != 'none'
+					direction !== 'none'
 				) {
 					changeDirection('left');
 					document.removeEventListener('keydown', handleChangeDirection);
@@ -145,43 +132,59 @@ function Snake() {
 		checkDirection();
 	};
 
-	const handleChangeDirection = (e: KeyboardEvent) => {
-		switch (e.key) {
-			case 'w':
-			case 'ArrowUp':
-				if (direction !== 'down' && direction !== 'up') {
-					changeDirection('up');
-					document.removeEventListener('keydown', handleChangeDirection);
-				}
-				break;
-			case 's':
-			case 'ArrowDown':
-				if (direction !== 'up' && direction !== 'down') {
-					changeDirection('down');
-					document.removeEventListener('keydown', handleChangeDirection);
-				}
-				break;
-			case 'd':
-			case 'ArrowRight':
-				if (direction !== 'left' && direction !== 'right') {
-					changeDirection('right');
-					document.removeEventListener('keydown', handleChangeDirection);
-				}
-				break;
-			case 'a':
-			case 'ArrowLeft':
-				if (
-					direction !== 'right' &&
-					direction !== 'left' &&
-					direction != 'none'
-				) {
-					changeDirection('left');
-					document.removeEventListener('keydown', handleChangeDirection);
-				}
-				break;
-			default:
+	const handleChangeDirection = useCallback(
+		(e: KeyboardEvent) => {
+			switch (e.key) {
+				case 'w':
+				case 'ArrowUp':
+					if (direction !== 'down' && direction !== 'up') {
+						changeDirection('up');
+						document.removeEventListener('keydown', handleChangeDirection);
+					}
+					break;
+				case 's':
+				case 'ArrowDown':
+					if (direction !== 'up' && direction !== 'down') {
+						changeDirection('down');
+						document.removeEventListener('keydown', handleChangeDirection);
+					}
+					break;
+				case 'd':
+				case 'ArrowRight':
+					if (direction !== 'left' && direction !== 'right') {
+						changeDirection('right');
+						document.removeEventListener('keydown', handleChangeDirection);
+					}
+					break;
+				case 'a':
+				case 'ArrowLeft':
+					if (
+						direction !== 'right' &&
+						direction !== 'left' &&
+						direction !== 'none'
+					) {
+						changeDirection('left');
+						document.removeEventListener('keydown', handleChangeDirection);
+					}
+					break;
+				default:
+			}
+		},
+		[direction]
+	);
+
+	useEffect(() => {
+		if (gameOverFlag) {
+			if (JSON.parse(localStorage.getItem('snakerecord') || '0') < score) {
+				localStorage.setItem('snakerecord', JSON.stringify(score));
+			}
+			document.removeEventListener('keydown', handleChangeDirection);
+			if (snakeTitle.current) {
+				snakeTitle.current.innerHTML = `Koniec gry! Wynik: ${score}`;
+			}
+			changeButtonStatus('100%');
 		}
-	};
+	}, [gameOverFlag, score, handleChangeDirection]);
 
 	useEffect(() => {
 		if (!gameOverFlag) {
@@ -257,7 +260,14 @@ function Snake() {
 				clearTimeout(intervalId);
 			};
 		}
-	}, [direction, snake, handleChangeDirection]);
+	}, [
+		direction,
+		snake,
+		handleChangeDirection,
+		arrayBoard,
+		gameOverFlag,
+		score,
+	]);
 
 	useEffect(() => {
 		const array = arrayBoard.map((elem, index) => (

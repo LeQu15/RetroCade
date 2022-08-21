@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Snake from './Snake';
 interface AppData {
 	appId: string;
@@ -6,7 +6,7 @@ interface AppData {
 
 function Loading(props: AppData) {
 	const [gameInfo, updateGameInfo] = useState(<div></div>);
-	const determineGame = () => {
+	const determineGame = useCallback(() => {
 		if (props.appId === 'snake') {
 			setTimeout(() => {
 				updateGameInfo(<Snake />);
@@ -22,11 +22,11 @@ function Loading(props: AppData) {
 				</div>
 			);
 		}
-	};
+	}, [props.appId]);
 
 	useEffect(() => {
 		determineGame();
-	}, []);
+	}, [determineGame]);
 
 	return gameInfo;
 }
