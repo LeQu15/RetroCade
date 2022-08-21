@@ -18,6 +18,10 @@ function Header() {
 			const fullDate = `${hour}:${minutes}`;
 			updateTime(fullDate);
 		}, 1000);
+
+		return () => {
+			clearInterval(intervalTime);
+		};
 	});
 
 	return (
