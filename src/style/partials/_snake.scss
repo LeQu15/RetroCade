@@ -1,0 +1,88 @@
+div.board {
+	width: 40px;
+	height: 40px;
+	background-color: rgba(128, 83, 0, 0.945);
+}
+
+.board:nth-of-type(2n) {
+	background-color: rgba(92, 61, 2, 0.945);
+}
+
+.snakeBoard {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 680px;
+}
+.snake {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.snake h1 {
+	margin-bottom: 40px;
+	color: white;
+}
+
+.snake button {
+	background-color: green;
+	color: white;
+	padding: 20px;
+	border-radius: 200px;
+	margin-top: 20px;
+	cursor: pointer;
+	transition: 0.1s;
+}
+
+.snake button:hover {
+	background-color: rgb(5, 155, 5);
+}
+
+.coin {
+	background-image: url('/img/apple.png');
+	background-position: center;
+	background-size: contain;
+}
+
+div.board.snakeBody {
+	background-color: rgb(24, 145, 0);
+}
+
+div.board.snakeHead.left,
+div.board.snakeHead.right {
+	background-color: rgb(24, 145, 0);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: column;
+	background-image: url('/img/snakeface.webp');
+	background-size: contain;
+	background-position: center;
+}
+
+div.board.snakeHead.left {
+	transform: scaleX(-1);
+}
+
+div.board.snakeHead.up {
+	transform: rotate(90deg) scaleX(-1);
+}
+
+div.board.snakeHead.down {
+	transform: rotate(90deg);
+}
+
+div.board.snakeHead.up,
+div.board.snakeHead.down {
+	background-color: rgb(24, 145, 0);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: row;
+	background-image: url('/img/snakeface.webp');
+	background-size: contain;
+	background-position: center;
+}

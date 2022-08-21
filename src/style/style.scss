@@ -1,0 +1,18 @@
+@import './partials/footer.scss';
+@import './partials/header.scss';
+@import './partials/main.scss';
+@import './partials/game.scss';
+@import './partials/snake.scss';
+@import './partials/loading.scss';
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Press Start 2P', cursive;
+}
+
+body {
+	overflow: hidden;
+}
