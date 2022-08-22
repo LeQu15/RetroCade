@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import scoreSound from '../sound/snake_score.mp3';
 
 let touchstartX = 0;
 let touchendX = 0;
@@ -268,6 +269,12 @@ function Snake() {
 		gameOverFlag,
 		score,
 	]);
+
+	useEffect(() => {
+		if (score > 0) {
+			new Audio(scoreSound).play();
+		}
+	}, [score]);
 
 	useEffect(() => {
 		const array = arrayBoard.map((elem, index) => (

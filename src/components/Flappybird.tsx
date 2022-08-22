@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import scoreSound from '../sound/sfx_point.mp3';
+import jumpSound from '../sound/sfx_wing.mp3';
+import deathSound from '../sound/sfx_die.mp3';
 
 function FlappyBird() {
+	const flappyscreen = React.useRef<HTMLDivElement>(null);
 	const [birdPosition, changeBirdPosition] = useState(400);
 	const [gameStarted, startGame] = useState(false);
 	const [gameOver, stopGame] = useState(false);
@@ -8,7 +12,8 @@ function FlappyBird() {
 	const [pipeDistance, changePipeDistance] = useState(800 - 100);
 	const [score, updateScore] = useState(0);
 	const [endScreen, updateEndScreen] = useState('none');
-	const bottom = 733 - 220 - pipeHeight;
+	const [birdJumped, changeBirdJump] = useState(false);
+	const bottom = 800 - 180 - pipeHeight;
 	const bird = React.useRef<HTMLDivElement>(null);
 
 	const flappyJump = () => {
@@ -16,7 +21,8 @@ function FlappyBird() {
 			if (birdPosition < 150) {
 				changeBirdPosition(0);
 			} else {
-				changeBirdPosition(birdPosition - 70);
+				changeBirdPosition(birdPosition - 100);
+				changeBirdJump(true);
 			}
 		} else {
 			stopGame(false);
@@ -26,6 +32,7 @@ function FlappyBird() {
 			setPipeHeight(100);
 			updateScore(0);
 		}
+		new Audio(jumpSound).play();
 		bird.current?.classList.add('flappyjump');
 		setTimeout(() => {
 			bird.current?.classList.remove('flappyjump');
@@ -34,26 +41,32 @@ function FlappyBird() {
 
 	useEffect(() => {
 		if (gameStarted) {
-			let timer: NodeJS.Timer;
-			if (birdPosition < 800 - 115) {
-				timer = setInterval(() => {
-					changeBirdPosition(birdPosition + 6);
-				}, 24);
+			if (!birdJumped) {
+				if (birdPosition < 800) {
+					const timer = setInterval(() => {
+						changeBirdPosition(birdPosition + 6);
+					}, 20);
 
-				return () => {
-					clearInterval(timer);
-				};
+					return () => {
+						clearInterval(timer);
+					};
+				} else {
+					stopGame(true);
+				}
 			} else {
-				stopGame(true);
+				setTimeout(() => {
+					changeBirdJump(false);
+				}, 200);
 			}
 		}
-	}, [birdPosition, gameStarted]);
+	}, [birdPosition, gameStarted, birdJumped]);
 
 	useEffect(() => {
 		if (gameOver) {
 			if (JSON.parse(localStorage.getItem('flappyrecord') || '0') < score) {
 				localStorage.setItem('flappyrecord', JSON.stringify(score));
 			}
+			new Audio(deathSound).play();
 			updateEndScreen('flex');
 			startGame(false);
 		} else {
@@ -66,7 +79,7 @@ function FlappyBird() {
 			let pipeTimer: NodeJS.Timer;
 			if (pipeDistance >= -100) {
 				pipeTimer = setInterval(() => {
-					changePipeDistance(pipeDistance - 5);
+					changePipeDistance(pipeDistance - 7);
 				}, 20);
 
 				return () => {
@@ -74,8 +87,9 @@ function FlappyBird() {
 				};
 			} else {
 				updateScore(score + 1);
-				changePipeDistance(700 - 100);
-				setPipeHeight(Math.floor(Math.random() * (733 - 220)));
+				new Audio(scoreSound).play();
+				changePipeDistance(800 - 100);
+				setPipeHeight(Math.floor(Math.random() * (800 - 180)));
 			}
 		}
 	}, [gameStarted, pipeDistance, score]);
@@ -83,7 +97,7 @@ function FlappyBird() {
 	useEffect(() => {
 		if (
 			((birdPosition >= 0 && birdPosition < pipeHeight) ||
-				(birdPosition <= 800 && birdPosition >= 670 - bottom)) &&
+				(birdPosition <= 800 && birdPosition >= 800 - bottom)) &&
 			pipeDistance >= 100 &&
 			pipeDistance <= 160
 		) {
@@ -92,7 +106,7 @@ function FlappyBird() {
 	}, [birdPosition, bottom, pipeDistance, pipeHeight]);
 
 	return (
-		<div className='flappybird' onClick={flappyJump}>
+		<div className='flappybird' onClick={flappyJump} ref={flappyscreen}>
 			<h3>{score}</h3>
 			<div className='flappyend' style={{ display: endScreen }}>
 				<h3>
@@ -116,7 +130,7 @@ function FlappyBird() {
 			<div
 				className='pipeBottom'
 				style={{
-					top: 733 - (pipeHeight + bottom) + 'px',
+					top: 800 - (pipeHeight + bottom) + 'px',
 					height: bottom + 'px',
 					left: pipeDistance + 'px',
 				}}
