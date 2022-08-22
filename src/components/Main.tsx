@@ -7,6 +7,9 @@ import App from './App';
 
 function Main() {
 	const snakerecord = JSON.parse(localStorage.getItem('snakerecord') || '0');
+	const flappybirdrecord = JSON.parse(
+		localStorage.getItem('flappyrecord') || '0'
+	);
 	const [activeModule, changeActiveModule] = useState('');
 
 	const openModule = (e: React.MouseEvent) => {
@@ -33,7 +36,7 @@ function Main() {
 						<img src={flappy} alt='ghost' />
 						Flappybird
 					</div>
-					<h3>HS:{snakerecord}</h3>
+					<h3>HS:{flappybirdrecord}</h3>
 				</div>
 				<div>
 					<div className='app' id='snake' onClick={openModule}>

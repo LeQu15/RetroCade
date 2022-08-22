@@ -180,7 +180,7 @@ function Snake() {
 			}
 			document.removeEventListener('keydown', handleChangeDirection);
 			if (snakeTitle.current) {
-				snakeTitle.current.innerHTML = `Koniec gry! Wynik: ${score}`;
+				snakeTitle.current.innerHTML = `Game Over! <span>Score: ${score}</span>`;
 			}
 			changeButtonStatus('100%');
 		}

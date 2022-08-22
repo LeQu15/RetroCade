@@ -1,0 +1,87 @@
+.flappybird {
+	width: 600px;
+	height: 800px;
+	background-image: url('/img/fbbgc.webp');
+	background-position: bottom;
+	background-size: cover;
+	position: relative;
+	overflow: hidden;
+}
+
+.flappybird .bird {
+	width: 60px;
+	height: 60px;
+	background-image: url('/img/flappy.png');
+	background-size: 65px 65px;
+	background-position: center;
+	position: absolute;
+	top: 50%;
+	left: 100px;
+	z-index: 4;
+}
+
+.flappyjump {
+	transform: rotateZ(-45deg);
+}
+
+.flappybird h3 {
+	position: absolute;
+	top: 5%;
+	left: 50%;
+	transform: translateX(-50%);
+	color: black;
+	pointer-events: none;
+	user-select: none;
+	z-index: 5;
+}
+
+.pipeTop {
+	position: relative;
+	width: 80px;
+	background-image: url('/img/pipe.png');
+	background-size: 85px 110%;
+	background-position: center;
+	background-repeat: no-repeat;
+	transform: rotate(180deg);
+}
+
+.pipeBottom {
+	position: relative;
+	width: 80px;
+	background-image: url('/img/pipe.png');
+	background-size: 85px 110%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.flappyend {
+	width: 80%;
+	height: 300px;
+	background-color: rgb(151, 73, 0);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 10;
+	transform: translate(-50%, -50%);
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 7px dashed rgb(201, 100, 5);
+}
+
+.flappyend h3 {
+	color: white;
+	font-size: 25px;
+}
+.flappyend h3 span {
+	display: block;
+	margin-top: 20px;
+	font-size: 15px;
+	text-align: center;
+}
+
+.flappyend p {
+	color: white;
+	font-size: 25px;
+	text-align: center;
+}
