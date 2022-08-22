@@ -19,3 +19,6 @@ To install this project run:
 | ------------------------- | ----------------------------- |
 | `npm run start`           | Open local server             |
 | `npm run build`           | Create optimized build        |
+
+## Live :round_pushpin:
+> https://frabjous-caramel-fe6f80.netlify.app
