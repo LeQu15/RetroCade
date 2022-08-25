@@ -44,7 +44,7 @@ function FlappyBird() {
 			if (!birdJumped) {
 				if (birdPosition < 800) {
 					const timer = setInterval(() => {
-						changeBirdPosition(birdPosition + 6);
+						changeBirdPosition(birdPosition + 8);
 					}, 20);
 
 					return () => {

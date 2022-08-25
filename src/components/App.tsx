@@ -8,34 +8,21 @@ interface AppData {
 
 function App(props: AppData) {
 	const playApp = () => {
-		switch (props.appId) {
-			case 'snake':
-				return (
-					<div className='gameBackground'>
-						<div className='game'>
-							<button id='closeGame' onClick={props.updateParentModule}>
-								X
-							</button>
-							<Loading appId={props.appId} />
-						</div>
+		if (props.appId) {
+			return (
+				<div className='gameBackground'>
+					<div className='game'>
+						<button id='closeGame' onClick={props.updateParentModule}>
+							X
+						</button>
+						<Loading appId={props.appId} />
 					</div>
-				);
-			case 'flappybird':
-				return (
-					<div className='gameBackground'>
-						<div className='game'>
-							<button id='closeGame' onClick={props.updateParentModule}>
-								X
-							</button>
-							<Loading appId={props.appId} />
-						</div>
-					</div>
-				);
-			default:
-				return null;
+				</div>
+			);
+		} else {
+			return null;
 		}
 	};
-
 	return <>{playApp()}</>;
 }
 
