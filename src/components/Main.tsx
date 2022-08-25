@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ghost from '../img/ghost.png';
 import flappy from '../img/flappy.png';
 import apple from '../img/apple.png';
 import timberman from '../img/timberman.png';
