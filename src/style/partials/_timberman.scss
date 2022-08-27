@@ -1,0 +1,158 @@
+.timberman {
+	width: 70%;
+	background-image: url('/img/sk.jpg');
+	background-size: cover;
+	height: 90%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	flex-direction: column;
+}
+.timbermanTree {
+	width: 150px;
+	height: 90%;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.tree {
+	width: 100%;
+	background-image: url('/img/tree.jpg');
+	background-size: contain;
+	flex: 1;
+	position: relative;
+}
+.timbergrass {
+	height: 11%;
+	width: 100%;
+	background-image: url('/img/grass.jpg');
+	background-size: contain;
+}
+
+.treeleft::after {
+	content: '';
+	position: absolute;
+	width: 150px;
+	height: 40px;
+	left: -150px;
+	flex: 1;
+	bottom: 0;
+	background-image: url('/img/tree.jpg');
+	background-size: contain;
+}
+
+.treeright::after {
+	content: '';
+	position: absolute;
+	width: 150px;
+	height: 40px;
+	right: -150px;
+	bottom: 0;
+	flex: 1;
+	background-image: url('/img/tree.jpg');
+	background-size: contain;
+}
+
+.timbermanguy {
+	width: 80px;
+	height: 90px;
+	flex: 1;
+	background-image: url('/img/steve.png');
+	background-size: 90%;
+	background-repeat: no-repeat;
+	background-position: top left;
+	position: absolute;
+	right: -115px;
+	bottom: 0;
+}
+
+.timbertimer {
+	width: 300px;
+	height: 30px;
+	background-color: black;
+	position: absolute;
+	top: 8%;
+	z-index: 5;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0 5px;
+}
+
+.timbertimer div {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(138, 2, 2, 1) 0%,
+		rgba(252, 106, 106, 1) 100%
+	);
+	width: 90%;
+	height: 70%;
+}
+
+.timbermanguy.left {
+	right: 0;
+	left: -115px;
+	transform: scaleX(-1);
+}
+
+.timberscore {
+	position: absolute;
+	top: 3%;
+	z-index: 5;
+	color: white;
+	font-size: 30px;
+	text-shadow: 2px 2px #000000;
+}
+
+.timbergameover {
+	width: 80%;
+	height: 50%;
+	background-color: rgb(119, 45, 2);
+	position: absolute;
+	z-index: 8;
+	box-shadow: 8px 8px 3px black;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.timbergameover p {
+	font-size: 30px;
+	color: white;
+}
+
+.timbergameover button {
+	font-size: 18px;
+	padding: 10px;
+	border: 3px solid rgb(85, 31, 0);
+	background-color: rgb(151, 55, 0);
+	cursor: pointer;
+	transition: 0.1s;
+	z-index: 9;
+}
+
+.timbergameover button:hover {
+	border: 3px solid rgb(122, 45, 0);
+	background-color: rgb(187, 69, 0);
+}
+
+.timberleftscreen {
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	z-index: 10;
+}
+.timberrightscreen {
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	right: 0;
+	z-index: 7;
+}
