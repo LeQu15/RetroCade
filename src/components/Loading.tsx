@@ -3,6 +3,7 @@ import Snake from './Snake';
 import FlappyBird from './Flappybird';
 import Saper from './Saper';
 import Timberman from './Timberman';
+import Spaceinvaders from './SpaceInvaders';
 interface AppData {
 	appId: string;
 }
@@ -58,6 +59,19 @@ function Loading(props: AppData) {
 						<div className='mobile'>
 							MOBILE: Tap the corresponding side of the screen
 						</div>
+					</>
+				);
+				break;
+			case 'spaceinvaders':
+				setTimeout(() => {
+					updateGameInfo(<Spaceinvaders />);
+				}, 2000);
+				x = (
+					<>
+						<div className='pc'>
+							PC: left and right arrow or a and d to move and space to shoot
+						</div>
+						<div className='mobile'>MOBILE: hold to move, tap to shoot</div>
 					</>
 				);
 				break;

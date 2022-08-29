@@ -9,7 +9,7 @@ function Main() {
 		JSON.parse(localStorage.getItem('timberrecord') || '0'),
 		JSON.parse(localStorage.getItem('flappyrecord') || '0'),
 		JSON.parse(localStorage.getItem('snakerecord') || '0') + 's',
-		JSON.parse(localStorage.getItem('saperrecord') || '0'),
+		JSON.parse(localStorage.getItem('spaceinvadersrecord') || '0'),
 	];
 
 	const openModule = (e: React.MouseEvent) => {

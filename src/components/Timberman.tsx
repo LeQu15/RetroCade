@@ -198,7 +198,7 @@ function Timberman() {
 	};
 
 	return (
-		<div className='timberman' tabIndex={0}>
+		<div className='timberman'>
 			<div
 				className='timberleftscreen'
 				onClick={chopLeft}
