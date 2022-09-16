@@ -42,3 +42,17 @@
 	background-color: red;
 	color: black;
 }
+
+@media (min-width: 320px) and (orientation: portrait) {
+	.game {
+		width: 90vw;
+		height: 90vh;
+	}
+}
+
+@media (min-width: 1180px) and (orientation: landscape) {
+	.game {
+		width: 85vw;
+		height: 90vh;
+	}
+}

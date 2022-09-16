@@ -1,5 +1,5 @@
 header img {
-	width: 4%;
+	width: 50px;
 	margin-right: 30px;
 }
 
@@ -70,5 +70,193 @@ header .date {
 	}
 	91% {
 		border-color: rgb(255, 0, 127);
+	}
+}
+
+@media (min-width: 320px) and (orientation: portrait) {
+	header img {
+		width: 24px;
+		margin-right: 30px;
+	}
+
+	header {
+		width: 100%;
+		height: 12vh;
+		border-bottom: 5px solid black;
+	}
+
+	.title {
+		margin-left: 2%;
+	}
+
+	header h1 {
+		font-size: 12px;
+	}
+
+	header .date {
+		font-size: 7px;
+		margin-right: 2%;
+	}
+}
+
+@media (min-width: 375px) and (orientation: portrait) {
+	header img {
+		width: 36px;
+		margin-right: 20px;
+	}
+
+	header {
+		width: 100%;
+		border-bottom: 5px solid black;
+	}
+
+	.title {
+		margin-left: 2%;
+	}
+
+	header h1 {
+		font-size: 18px;
+	}
+
+	header .date {
+		font-size: 8px;
+		margin-right: 2%;
+	}
+}
+
+@media (min-width: 768px) and (orientation: portrait) {
+	header img {
+		width: 40px;
+		margin-right: 20px;
+		margin-left: 5%;
+	}
+
+	header {
+		width: 100%;
+		border-bottom: 5px solid black;
+	}
+
+	header h1 {
+		font-size: 28px;
+	}
+
+	header .date {
+		font-size: 18px;
+		margin-right: 2%;
+	}
+}
+
+@media (min-width: 533px) and (orientation: landscape) {
+	header {
+		height: 12vh;
+	}
+
+	header img {
+		width: 24px;
+		margin-right: 30px;
+	}
+
+	.title {
+		margin-left: 3%;
+	}
+
+	header h1 {
+		font-size: 16px;
+	}
+
+	header .date {
+		font-size: 8px;
+		margin-right: 2%;
+	}
+}
+
+@media (min-width: 812px) and (orientation: landscape) {
+	header img {
+		width: 30px;
+		margin-right: 10px;
+	}
+
+	.title {
+		margin-left: 6%;
+	}
+
+	header h1 {
+		font-size: 18px;
+	}
+
+	header .date {
+		font-size: 10px;
+	}
+}
+
+@media (min-width: 1024px) and (orientation: landscape) {
+	header img {
+		width: 40px;
+	}
+
+	.title {
+		margin-left: 8%;
+	}
+
+	header h1 {
+		font-size: 25px;
+	}
+
+	header .date {
+		font-size: 14px;
+	}
+}
+
+@media (min-width: 1366px) and (orientation: landscape) {
+	header img {
+		width: 50px;
+	}
+
+	.title {
+		margin-left: 10%;
+	}
+
+	header h1 {
+		font-size: 35px;
+	}
+
+	header .date {
+		font-size: 18px;
+	}
+}
+
+@media (min-width: 1920px) and (orientation: landscape) {
+	header img {
+		width: 50px;
+		margin-right: 30px;
+	}
+
+	header {
+		width: 100%;
+		background-color: black;
+		border-bottom: 5px solid black;
+		animation: rainbow-bg 20s linear infinite;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
+
+	.title {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex: 1;
+		margin-left: 2%;
+	}
+
+	header h1 {
+		color: white;
+		font-size: 40px;
+	}
+
+	header .date {
+		color: white;
+		font-size: 25px;
+		margin-right: 2%;
 	}
 }

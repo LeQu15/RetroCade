@@ -14,14 +14,6 @@
 	border-color: #fff transparent #fff transparent;
 	animation: lds-dual-ring 1.2s linear infinite;
 }
-@keyframes lds-dual-ring {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
-}
 
 .loading {
 	display: flex;
@@ -47,4 +39,236 @@
 .gameInfo * {
 	padding: 5px;
 	font-size: 10px;
+}
+
+@keyframes lds-dual-ring {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@media (min-width: 320px) and (orientation: portrait) {
+	.lds-dual-ring {
+		width: 80px;
+		height: 80px;
+	}
+	.lds-dual-ring:after {
+		width: 64px;
+		height: 64px;
+		margin: 8px;
+		border-radius: 50%;
+	}
+
+	.loading h3 {
+		margin-top: 30px;
+		font-size: 12px;
+	}
+
+	.gameInfo {
+		margin-top: 50px;
+	}
+
+	.gameInfo * {
+		padding: 10px;
+		line-height: 15px;
+		font-size: 10px;
+	}
+}
+
+@media (min-width: 375px) and (orientation: portrait) {
+	.lds-dual-ring {
+		width: 104px;
+		height: 104px;
+	}
+	.lds-dual-ring:after {
+		width: 80px;
+		height: 80px;
+		margin: 8px;
+		border-radius: 50%;
+	}
+
+	.loading h3 {
+		margin-top: 30px;
+		font-size: 14px;
+	}
+
+	.gameInfo * {
+		padding: 12px;
+		line-height: 18px;
+		font-size: 11px;
+	}
+}
+
+@media (min-width: 768px) and (orientation: portrait) {
+	.lds-dual-ring {
+		width: 174px;
+		height: 174px;
+	}
+	.lds-dual-ring:after {
+		width: 150px;
+		height: 150px;
+		margin: 8px;
+		border-radius: 50%;
+	}
+
+	.loading h3 {
+		margin-top: 30px;
+		font-size: 18px;
+	}
+
+	.gameInfo * {
+		padding: 12px;
+		line-height: 18px;
+		font-size: 14px;
+	}
+}
+
+@media (min-width: 320px) and (orientation: landscape) {
+	.lds-dual-ring {
+		width: 80px;
+		height: 80px;
+	}
+	.lds-dual-ring:after {
+		width: 64px;
+		height: 64px;
+		margin: 8px;
+		border-radius: 50%;
+	}
+
+	.loading h3 {
+		margin-top: 30px;
+		font-size: 12px;
+	}
+
+	.gameInfo {
+		margin-top: 30px;
+	}
+
+	.gameInfo * {
+		padding: 5px;
+		font-size: 7px;
+	}
+}
+
+@media (min-width: 667px) and (orientation: landscape) {
+	.lds-dual-ring {
+		width: 96px;
+		height: 96px;
+	}
+	.lds-dual-ring:after {
+		width: 80px;
+		height: 80px;
+	}
+
+	.loading h3 {
+		margin-top: 30px;
+		font-size: 15px;
+	}
+
+	.gameInfo {
+		margin-top: 30px;
+	}
+
+	.gameInfo * {
+		padding: 5px;
+		font-size: 10px;
+	}
+}
+
+@media (min-width: 1180px) and (orientation: landscape) {
+	.lds-dual-ring {
+		width: 146px;
+		height: 146px;
+	}
+	.lds-dual-ring:after {
+		width: 130px;
+		height: 130px;
+	}
+
+	.loading h3 {
+		margin-top: 30px;
+		font-size: 22px;
+	}
+
+	.gameInfo {
+		margin-top: 70px;
+	}
+
+	.gameInfo * {
+		padding: 5px;
+		font-size: 12px;
+	}
+}
+
+@media (min-width: 1360px) and (orientation: landscape) {
+	.lds-dual-ring {
+		width: 166px;
+		height: 166px;
+	}
+	.lds-dual-ring:after {
+		width: 150px;
+		height: 150px;
+	}
+
+	.loading h3 {
+		margin-top: 30px;
+		font-size: 25px;
+	}
+
+	.gameInfo {
+		margin-top: 70px;
+	}
+
+	.gameInfo * {
+		padding: 5px;
+		font-size: 15px;
+	}
+}
+
+@media (min-width: 1920px) and (orientation: landscape) {
+	.lds-dual-ring {
+		display: inline-block;
+		width: 80px;
+		height: 80px;
+	}
+	.lds-dual-ring:after {
+		content: ' ';
+		display: block;
+		width: 64px;
+		height: 64px;
+		margin: 8px;
+		border-radius: 50%;
+		border: 6px solid #fff;
+		border-color: #fff transparent #fff transparent;
+		animation: lds-dual-ring 1.2s linear infinite;
+	}
+
+	.loading {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
+
+	.loading h3 {
+		margin-top: 30px;
+		color: white;
+	}
+
+	.gameInfo {
+		display: flex;
+		flex-direction: column;
+		color: white;
+		justify-content: center;
+		align-items: center;
+		margin-top: 50px;
+	}
+
+	.gameInfo * {
+		padding: 5px;
+		font-size: 10px;
+	}
 }
