@@ -1,0 +1,27 @@
+footer {
+    background-color: #171717;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100vw;
+    height: 8vh;
+    border-top: 2px solid #303030;
+}
+
+footer a {
+    color: white;
+    margin-right: 1.2em;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+footer a:hover {
+    color: red;
+}
+
+footer a i {
+    font-size: 1.5em;
+}
+
+    
